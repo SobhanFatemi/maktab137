@@ -1,8 +1,8 @@
-def repeated_more(my_list):
+def repeated_more(fruits):
     cache = {}
     max_fruit = ""
     max_count = 0
-    for item in my_list:
+    for item in fruits:
         if item in cache:
             cache[item] += 1
         else:
@@ -15,5 +15,5 @@ def repeated_more(my_list):
 
 
 
-my_list = ['orange', 'banana', 'apple', 'orange', 'apple', 'kiwi', 'apple']
-print(repeated_more(my_list))
+fruits = ['orange', 'banana', 'apple', 'orange', 'apple', 'kiwi', 'apple']
+print(repeated_more(fruits))
