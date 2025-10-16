@@ -3,7 +3,7 @@ BOOKS = (
     (2, "1984", "George Orwell", 1949, "Science Fiction", True),
     (3, "The Wealth of Nations", "Adam Smith", 1776, "Economics", False),
     (4, "Sapiens: A Brief History of Humankind", "Yuval Noah Harari", 2011, "History", True),
-    (5, "The Alchemist", "Paulo Coelho", 1988, "Fiction", True),
+    (5, "2", "Paulo Coelho", 1988, "Fiction", True),
     (6, "One Hundred Years of Solitude", "Gabriel García Márquez", 1967, "Fiction", False),
     (7, "Harry Potter and the Philosopher's Stone", "J.K. Rowling", 1997, "Fantasy", True),
     (8, "Mein Kampf", "Adolf Hitler", 1925, "History", True),
