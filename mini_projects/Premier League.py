@@ -58,10 +58,6 @@ def match_making(teams):
     round_matches = []
     used = set()
 
-    if len(played) >= 190:
-        print("\nAll possible matches have been played.")
-        return
-    
     for i in range(len(teams)):
         if teams[i]['name'] in used:
             continue
