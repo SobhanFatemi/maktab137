@@ -3,14 +3,14 @@ from datetime import datetime, timedelta
 
 LIBRARY_PATH = "library_data.pkl"
 
-def save_library(library):
-    with open(LIBRARY_PATH, "wb") as f:
+def save_library(library, path):
+    with open(path, "wb") as f:
         pickle.dump(library, f)
     print("Library data saved successfully.")
 
-def load_library():
+def load_library(path):
     try:
-        with open(LIBRARY_PATH, "rb") as file:
+        with open(path, "rb") as file:
             library = pickle.load(file)
         print("Library data loaded successfully.")
         return library
@@ -246,10 +246,168 @@ class TeacherMember(Member):
 
 # save_library(library)
     
-library = load_library()
+library = load_library(LIBRARY_PATH)
 
-library.show_all_books()
+while True:
+    first_choice = input("Please enter your desired choice:\n1- Add a book to library\n2- Add a member to library\n" \
+    "3- Borrow a book\n4- Return a book\n5- Search a book using title\n6- Search a member using name\n7 -Show all books\n" \
+    "8- Show all members\n9- Show number of available books\n10- Upload your library\n11- Save to Library pickle\n12- Quit\nYour choice: ")
 
-library.borrow_book(4001223022, "0-06-085052-3")
+    if first_choice == '1':
+        while True:
+            book_title = input("Please enter the title of the book: ")
+            if not book_title:
+                print("The title can not be empty!")
+                continue
+            book_author = input("Please enter the name of the author: ")
+            if not book_author:
+                print("The author name can not be empty!")
+                continue
+            book_isbn = input("Please enter the book's ISBN: ")
+            if not book_isbn:
+                print("ISBN can not be empty!")
+                continue
 
-library.books_status()
+            user_book = Book(book_title, book_author, book_isbn)
+            library.add_book(user_book)
+
+            second_choice = input("Do you wish to continue? (y/n): ")
+            if second_choice == 'y':
+                continue
+            elif second_choice == 'n':
+                break
+            else:
+                print("Invalid input!")
+
+    elif first_choice == '2':
+        while True:
+            member_name = input("Please enter member's name: ")
+            if not member_name:
+                print("The name can not be empty!")
+                continue
+            try:
+                member_id = int(input("Please enter member's ID: "))
+            except ValueError:
+                print("ID must be a number!")
+                continue
+            if not member_id:
+                print("The ID can not be empty!")
+                continue
+            member_email = input("Please enter member's email: ")
+            if not member_email:
+                print("The email can not be empty!")
+                continue
+
+            user_member = Member(member_name, member_id, member_email, [])
+            library.add_member(user_member)
+
+            second_choice = input("Do you wish to continue? (y/n): ")
+            if second_choice == 'y':
+                continue
+            elif second_choice == 'n':
+                break
+            else:
+                print("Invalid input!")
+    elif first_choice == '3':
+        while True:
+            try:
+                user_member_id = int(input("Please enter the member ID: "))
+            except ValueError:
+                print("ID must be a number!")
+                continue
+            user_book_isbn = input("Please enter the book ISBN: ")
+
+            library.borrow_book(user_member_id, user_book_isbn)
+
+            second_choice = input("Do you wish to continue? (y/n): ")
+            if second_choice == 'y':
+                continue
+            elif second_choice == 'n':
+                break
+            else:
+                print("Invalid input!")
+    
+    elif first_choice == '4':
+        while True:
+            try:
+                user_member_id = int(input("Please enter the member ID: "))
+            except ValueError:
+                print("ID must be a number!")
+                continue
+            user_book_isbn = input("Please enter the book ISBN: ")
+
+            library.return_book(user_member_id, user_book_isbn)
+
+            second_choice = input("Do you wish to continue? (y/n): ")
+            if second_choice == 'y':
+                continue
+            elif second_choice == 'n':
+                break
+            else:
+                print("Invalid input!")
+
+    elif first_choice == '5':
+        while True:
+            title = input("Please enter the title of the book: ")
+            library.search_book_by_title(title)
+
+            second_choice = input("Do you wish to continue? (y/n): ")
+            if second_choice == 'y':
+                continue
+            elif second_choice == 'n':
+                break
+            else:
+                print("Invalid input!")
+    
+    elif first_choice == '6':
+        while True:
+            name = input("Please enter the name of the member: ")
+            library.search_book_by_title(name)
+
+            second_choice = input("Do you wish to continue? (y/n): ")
+            if second_choice == 'y':
+                continue
+            elif second_choice == 'n':
+                break
+            else:
+                print("Invalid input!")
+
+    elif first_choice == '7':
+        library.show_all_books()
+
+    elif first_choice == '8':
+        library.show_all_members()
+    
+    elif first_choice == '9':
+        library.books_status()
+
+    elif first_choice == '10':
+        while True:
+            try:
+                user_path = input("Please enter your desired path: ")
+                load_library(user_path) 
+            except Exception as e:
+                print(f"An error occured!: {e}")
+
+            second_choice = input("Do you wish to continue? (y/n): ")
+            if second_choice == 'y':
+                continue
+            elif second_choice == 'n':
+                break
+            else:
+                print("Invalid input!")
+    
+    elif first_choice == '11':
+        second_choice = input("Are you sure about the save? (y/n): ")
+        if second_choice == 'y':
+            save_library(library, LIBRARY_PATH)
+        elif second_choice == 'n':
+            pass
+        else:
+            print("Invalid input!")
+
+    elif first_choice == '12':
+        break
+
+    else:
+        print("Invalid input!")
