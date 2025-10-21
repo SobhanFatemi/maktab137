@@ -1,22 +1,84 @@
 import pickle
+import os
 from datetime import datetime, timedelta
+
 
 LIBRARY_PATH = "library_data.pkl"
 
-def save_library(library, path):
-    with open(path, "wb") as f:
-        pickle.dump(library, f)
-    print("Library data saved successfully.")
+def save_library(library, user_path=None):
+    while True:
+        if not user_path:
+            user_path = input("Enter the file path to save the library: ").strip()
+        if not user_path:
+            print("File path cannot be empty!")
+            continue
 
-def load_library(path):
-    try:
-        with open(path, "rb") as file:
-            library = pickle.load(file)
-        print("Library data loaded successfully.")
-        return library
-    except FileNotFoundError:
-        print("No previous data found, creating new library.")
-        return Library([], [])
+        if os.path.exists(user_path) and user_path != LIBRARY_PATH:
+            overwrite = input(f"'{user_path}' already exists. Replace it? (y/n): ").strip().lower()
+            if overwrite == 'y':
+                try:
+                    with open(user_path, "wb") as file:
+                        pickle.dump(library, file)
+                    print(f"Library saved successfully to '{user_path}'!")
+                    break
+                except Exception as e:
+                    print(f"Error saving library: {e}")
+                    break
+            elif overwrite == 'n':
+                try_again = input("Do you want to choose a different file path? (y/n): ").strip().lower()
+                if try_again == 'y':
+                    continue
+                else:
+                    print("Save canceled!")
+                    break
+            else:
+                print("Invalid input!")
+        else:
+            try:
+                with open(user_path, "wb") as f:
+                    pickle.dump(library, f)
+                print(f"Library saved successfully to '{user_path}'!")
+                break
+            except Exception as e:
+                print(f"Error saving library: {e}")
+                break
+
+def load_library(user_path=None):
+    while True:
+        if not user_path:
+            user_path = input("Enter the file path to load the library: ").strip()
+        if not user_path:
+            print("Path cannot be empty. Please try again.")
+            user_path = None
+            continue
+
+        if not os.path.exists(user_path):
+            print(f"File '{user_path}' does not exist.")
+            choice = input("Do you want to create a new empty library? (y/n): ").strip().lower()
+            if choice == 'y':
+                print("Creating a new empty library...")
+                return Library([], [])
+            else:
+                print("Please enter another file path!")
+                user_path = None
+                continue
+
+        try:
+            with open(user_path, "rb") as file:
+                library = pickle.load(file)
+            print(f"Library loaded successfully from '{user_path}'!")
+            return library
+        
+        except Exception as e:
+            print(f"An unexpected error occurred while loading: {e}")
+            retry = input("Try again? (y/n): ").strip().lower()
+            if retry == 'y':
+                user_path = None
+                continue
+            else:
+                print("Creating a new empty library...")
+                return Library([], [])
+                
 
 class Member():
     def __init__(self, name, id, email, borrowed_books):
@@ -57,17 +119,17 @@ class Member():
               
 
 class Book:
-    total_books = 0
+    total_books = []
     
     def __init__(self, title, author, isbn, is_borrowed=False, borrowed_date=None, return_date=None):
         self.title = title
         self.author = author
         self.isbn = isbn
         self.is_borrowed = is_borrowed
-        Book.total_books += 1
+        Book.total_books.append(self)
 
-        def __str__():
-            return f"Total books created: {Book.total_books}"
+    def __len__(self):
+        return len(self.total_books)
 
     def mark_as_borrowed(self):
         self.is_borrowed = True
@@ -104,14 +166,6 @@ class Library:
             else:
                 print(f"'{member.name}' is already a member in the library!")
 
-    def books_status(self):
-        available = 0
-        for book in self.books:
-            if not book.is_borrowed:
-                available += 1
-        unavailable = len(self.books) - available
-        print(f"Available books: {available}\nBorrowed books: {unavailable}")
-
     def borrow_book(self, member_id, isbn):
         member_found = False
         book_found = False
@@ -121,7 +175,7 @@ class Library:
                 for book in self.books:
                     if isbn == book.isbn:
                         book_found = True
-                        member.borrow_book(book)
+                        member.borrow_book(book, self)
         if not member_found:
             print("Member Not found!")
         elif not book_found:
@@ -167,9 +221,17 @@ class Library:
     def show_all_members(self):
         for i, member in enumerate(self.members):
             print(f"#{i+1}: '{member.name}'")
+    
+    def books_status(self):
+        available = 0
+        for book in self.books:
+            if not book.is_borrowed:
+                available += 1
+        unavailable = len(self.books) - available
+        print(f"Available books: {available}\nBorrowed books: {unavailable}")
 
 class StudentMember(Member):
-    def borrow_book(self, book):
+    def borrow_book(self, book, library):
         if len(self.borrowed_books) < 3:
             if self in library.members:
                 if book in library.books:
@@ -179,7 +241,7 @@ class StudentMember(Member):
                         else:
                             book.mark_as_borrowed()
                             self.borrowed_books.append(book)
-                            print(f"'{self.name}' borrowed: '{book.title}'!\nReturn date: '{book.return_date}")
+                            print(f"'{self.name}' borrowed: '{book.title}'!\nReturn date: '{book.return_date}'")
                     else:
                         print(f"'{self.name}' has already borrowed: '{book.title}'!")
                 else:
@@ -190,7 +252,7 @@ class StudentMember(Member):
             print(f"'{self.name}' already has borrowed 3 books!")
 
 class TeacherMember(Member):
-    def borrow_book(self, book):
+    def borrow_book(self, book, library):
         if len(self.borrowed_books) < 5:
             if self in library.members:
                 if book in library.books:
@@ -200,7 +262,7 @@ class TeacherMember(Member):
                         else:
                             book.mark_as_borrowed()
                             self.borrowed_books.append(book)
-                            print(f"'{self.name}' borrowed: '{book.title}'!\nReturn date: '{book.return_date}")
+                            print(f"'{self.name}' borrowed: '{book.title}'!\nReturn date: '{book.return_date}'")
                     else:
                         print(f"'{self.name}' has already borrowed: '{book.title}'!")
                 else:
@@ -211,59 +273,50 @@ class TeacherMember(Member):
             print(f"'{self.name}' already has borrowed 5 books!")
         
 
-# library = Library([], [])
-
-# harry_potter = Book("Harry Potter", "J. K. Rowling", "0-7701-8798-6")
-# lotr = Book("The Lord of the Rings", "J. R. R. Tolkien", "0-395-19395-8")
-# hobbit = Book("The Hobbit", "J. R. R. Tolkien", "0-618-00221-9")
-# got = Book("A Game of Thrones", "George R. R. Martin", "0-553-10354-7")
-# mockingbird = Book("To Kill a Mockingbird", "Harper Lee", "0-06-112008-1")
-# gatsby = Book("The Great Gatsby", "F. Scott Fitzgerald", "0-7432-7356-7")
-# nineteen_eighty_four = Book("1984", "George Orwell", "0-452-28423-6")
-# moby_dick = Book("Moby Dick", "Herman Melville", "0-14-243724-7")
-# pride_prejudice = Book("Pride and Prejudice", "Jane Austen", "0-19-280238-0")
-# catcher_rye = Book("The Catcher in the Rye", "J. D. Salinger", "0-316-76948-7")
-# brave_new_world = Book("Brave New World", "Aldous Huxley", "0-06-085052-3")
-
-# john = StudentMember("John", 4001223013, "John55@gmail.com", [])
-# steve = StudentMember("Steve", 4001223012, "Steve23@gmail.com", [])
-# michael = StudentMember("Michael", 4001223014, "michael99@gmail.com", [])
-# emily = StudentMember("Emily", 4001223015, "emily77@gmail.com", [])
-# david = StudentMember("David", 4001223016, "david01@gmail.com", [])
-# sophia = StudentMember("Sophia", 4001223017, "sophia65@gmail.com", [])
-# daniel = StudentMember("Daniel", 4001223018, "daniel42@gmail.com", [])
-# olivia = StudentMember("Olivia", 4001223019, "olivia33@gmail.com", [])
-# james = StudentMember("James", 4001223020, "james88@gmail.com", [])
-# ava = StudentMember("Ava", 4001223021, "ava21@gmail.com", [])
-# liam = StudentMember("Liam", 4001223022, "liam14@gmail.com", [])
-
-# rose = TeacherMember("Rose", 3000928394, "rose98@gmail.com", [])
-# william = TeacherMember("William", 3000928395, "william83@gmail.com", [])
-# natalie = TeacherMember("Natalie", 3000928396, "natalie72@gmail.com", [])
-
-# library.add_book(harry_potter, lotr, hobbit, got, mockingbird, gatsby, nineteen_eighty_four, moby_dick, pride_prejudice, catcher_rye, brave_new_world)
-# library.add_member(john, steve, michael, emily, david, sophia, daniel, olivia, james, ava, rose, liam, william, natalie)
-
-# save_library(library)
-    
 library = load_library(LIBRARY_PATH)
+
 
 while True:
     first_choice = input("Please enter your desired choice:\n1- Add a book to library\n2- Add a member to library\n" \
     "3- Borrow a book\n4- Return a book\n5- Search a book using title\n6- Search a member using name\n7 -Show all books\n" \
-    "8- Show all members\n9- Show number of available books\n10- Upload your library\n11- Save to Library pickle\n12- Quit\nYour choice: ")
+    "8- Show all members\n9- Show number of available books\n10- Upload your library\n11- Save to Library pickle\n12- Quit\nYour choice: ").strip()
 
     if first_choice == '1':
         while True:
-            book_title = input("Please enter the title of the book: ")
+            exists = False
+
+            book_title = input("Please enter the title of the book: ").strip()
+            for book in library.books:
+                    if book.title == book_title:
+                        print(f"'{book_title}' already exists!")
+                        exists = True
+                        break
+            if exists:
+                continue
             if not book_title:
                 print("The title can not be empty!")
                 continue
-            book_author = input("Please enter the name of the author: ")
+
+            book_author = input("Please enter the name of the author: ").strip()
+            for book in library.books:
+                    if book.author == book_author:
+                        print(f"'{book_author}' already exists!")
+                        exists = True
+                        break
+            if exists:
+                continue
             if not book_author:
                 print("The author name can not be empty!")
                 continue
-            book_isbn = input("Please enter the book's ISBN: ")
+
+            book_isbn = input("Please enter the book's ISBN: ").strip()
+            for book in library.books:
+                    if book.isbn == book_isbn:
+                        print(f"'{book_isbn}' already exists!")
+                        exists = True
+                        break
+            if exists:
+                continue
             if not book_isbn:
                 print("ISBN can not be empty!")
                 continue
@@ -271,7 +324,7 @@ while True:
             user_book = Book(book_title, book_author, book_isbn)
             library.add_book(user_book)
 
-            second_choice = input("Do you wish to continue? (y/n): ")
+            second_choice = input("Do you wish to continue? (y/n): ").strip().lower()
             if second_choice == 'y':
                 continue
             elif second_choice == 'n':
@@ -281,19 +334,41 @@ while True:
 
     elif first_choice == '2':
         while True:
-            member_name = input("Please enter member's name: ")
+            exists = False
+            member_name = input("Please enter member's name: ").strip()
+            for member in library.members:
+                    if member.name == member_name:
+                        print(f"'{member_name}' already exists!")
+                        exists = True
+                        break
+            if exists:
+                continue
             if not member_name:
                 print("The name can not be empty!")
                 continue
             try:
                 member_id = int(input("Please enter member's ID: "))
+                for member in library.members:
+                    if member.id == member_id:
+                        print(f"'{member_id}' already exists!")
+                        exists = True
+                        break
+                if exists:
+                    continue
             except ValueError:
                 print("ID must be a number!")
                 continue
             if not member_id:
                 print("The ID can not be empty!")
                 continue
-            member_email = input("Please enter member's email: ")
+            member_email = input("Please enter member's email: ").strip()
+            for member in library.members:
+                    if member.email == member_email:
+                        print(f"'{member_email}' already exists!")
+                        exists = True
+                        break
+            if exists:
+                    continue
             if not member_email:
                 print("The email can not be empty!")
                 continue
@@ -301,7 +376,7 @@ while True:
             user_member = Member(member_name, member_id, member_email, [])
             library.add_member(user_member)
 
-            second_choice = input("Do you wish to continue? (y/n): ")
+            second_choice = input("Do you wish to continue? (y/n): ").strip().lower()
             if second_choice == 'y':
                 continue
             elif second_choice == 'n':
@@ -315,11 +390,11 @@ while True:
             except ValueError:
                 print("ID must be a number!")
                 continue
-            user_book_isbn = input("Please enter the book ISBN: ")
+            user_book_isbn = input("Please enter the book ISBN: ").strip()
 
             library.borrow_book(user_member_id, user_book_isbn)
 
-            second_choice = input("Do you wish to continue? (y/n): ")
+            second_choice = input("Do you wish to continue? (y/n): ").strip().lower()
             if second_choice == 'y':
                 continue
             elif second_choice == 'n':
@@ -334,11 +409,11 @@ while True:
             except ValueError:
                 print("ID must be a number!")
                 continue
-            user_book_isbn = input("Please enter the book ISBN: ")
+            user_book_isbn = input("Please enter the book ISBN: ").strip()
 
             library.return_book(user_member_id, user_book_isbn)
 
-            second_choice = input("Do you wish to continue? (y/n): ")
+            second_choice = input("Do you wish to continue? (y/n): ").strip().lower()
             if second_choice == 'y':
                 continue
             elif second_choice == 'n':
@@ -348,10 +423,10 @@ while True:
 
     elif first_choice == '5':
         while True:
-            title = input("Please enter the title of the book: ")
+            title = input("Please enter the title of the book: ").strip()
             library.search_book_by_title(title)
 
-            second_choice = input("Do you wish to continue? (y/n): ")
+            second_choice = input("Do you wish to continue? (y/n): ").strip().lower()
             if second_choice == 'y':
                 continue
             elif second_choice == 'n':
@@ -361,10 +436,10 @@ while True:
     
     elif first_choice == '6':
         while True:
-            name = input("Please enter the name of the member: ")
-            library.search_book_by_title(name)
+            name = input("Please enter the name of the member: ").strip()
+            library.search_member_by_name(name)
 
-            second_choice = input("Do you wish to continue? (y/n): ")
+            second_choice = input("Do you wish to continue? (y/n): ").strip().lower()
             if second_choice == 'y':
                 continue
             elif second_choice == 'n':
@@ -382,31 +457,28 @@ while True:
         library.books_status()
 
     elif first_choice == '10':
-        while True:
-            try:
-                user_path = input("Please enter your desired path: ")
-                load_library(user_path) 
-            except Exception as e:
-                print(f"An error occured!: {e}")
-
-            second_choice = input("Do you wish to continue? (y/n): ")
-            if second_choice == 'y':
-                continue
-            elif second_choice == 'n':
-                break
-            else:
-                print("Invalid input!")
+        library = load_library()
     
     elif first_choice == '11':
-        second_choice = input("Are you sure about the save? (y/n): ")
+        second_choice = input("Would you like to quick save in an existing path? (y/n): ").strip().lower()
         if second_choice == 'y':
             save_library(library, LIBRARY_PATH)
         elif second_choice == 'n':
-            pass
+            save_library(library)
         else:
             print("Invalid input!")
 
     elif first_choice == '12':
+        save_choice = input("Would you like to save before quitting? (y/n): ").strip().lower()
+        if save_choice == 'y':
+            second_choice = input("Would you like to quick save in an existing path? (y/n): ").strip().lower()
+            if second_choice == 'y':
+                save_library(library, LIBRARY_PATH)
+            elif second_choice == 'n':
+                save_library(library)
+            else:
+                print("Invalid input!")
+        print("Library closed!")
         break
 
     else:

@@ -21,6 +21,7 @@ olivia = StudentMember("Olivia", 4001223019, "olivia33@gmail.com", [])
 james = StudentMember("James", 4001223020, "james88@gmail.com", [])
 ava = StudentMember("Ava", 4001223021, "ava21@gmail.com", [])
 liam = StudentMember("Liam", 4001223022, "liam14@gmail.com", [])
+brad = StudentMember("Brad", 4001223023, "brad34@gmail.com", [])
 
 rose = TeacherMember("Rose", 3000928394, "rose98@gmail.com", [])
 william = TeacherMember("William", 3000928395, "william83@gmail.com", [])
