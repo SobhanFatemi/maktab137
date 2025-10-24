@@ -6,6 +6,6 @@ products = [
     {'name': 'Keyboard', 'price': 75, 'quantity': 5}
 ]
 
-total_value = 
+total_value = reduce(lambda x, product: x + (product['price'] * product['quantity']), products, 0)
 
 print(f"Total inventory value: {total_value}")

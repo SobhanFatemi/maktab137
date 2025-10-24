@@ -1,6 +1,7 @@
 import pickle
 import os
 from datetime import datetime, timedelta
+from abc import ABC, abstractmethod
 
 
 LIBRARY_PATH = "library_data.pkl"
@@ -87,8 +88,9 @@ class Member():
         self.email = email
         self.borrowed_books = borrowed_books
 
+
     def borrow_book(self):
-        raise NotImplementedError("Subclasses must implement this method!")
+        raise NotImplementedError
 
     def return_book(self, book):
         if book in self.borrowed_books:
