@@ -1,0 +1,58 @@
+[
+    {
+        "id": 400100,
+        "user_id": 200100,
+        "travel_id": 300115,
+        "seat_number": "12A",
+        "status": "paid"
+    },
+    {
+        "id": 400101,
+        "user_id": 200100,
+        "travel_id": 300115,
+        "seat_number": "12B",
+        "status": "paid"
+    },
+    {
+        "id": 400102,
+        "user_id": 200100,
+        "travel_id": 300103,
+        "seat_number": "4A",
+        "status": "paid"
+    },
+    {
+        "id": 400103,
+        "user_id": 200100,
+        "travel_id": 300100,
+        "seat_number": "1A",
+        "status": "paid"
+    },
+    {
+        "id": 400104,
+        "user_id": 200100,
+        "travel_id": 300100,
+        "seat_number": "1B",
+        "status": "paid"
+    },
+    {
+        "id": 400105,
+        "user_id": 200100,
+        "travel_id": 300100,
+        "seat_number": "3B",
+        "status": "paid"
+    },
+    {
+        "id": 400106,
+        "user_id": 200100,
+        "travel_id": 300105,
+        "seat_number": "3B",
+        "status": "paid"
+    },
+    {
+        "id": 400107,
+        "user_id": 200100,
+        "travel_id": 300115,
+        "seat_number": "12A",
+        "status": "paid"
+    }
+]

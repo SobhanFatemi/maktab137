@@ -1,0 +1,383 @@
+[
+    {
+        "id": 300100,
+        "origin": "Tehran",
+        "destination": "Shiraz",
+        "starting_time": "2025-02-10 08:30",
+        "duration": 75,
+        "max_passengers": 40,
+        "available_seats": [
+            "2A",
+            "2B",
+            "3A"
+        ],
+        "price": 550000,
+        "status": "available"
+    },
+    {
+        "id": 300101,
+        "origin": "Isfahan",
+        "destination": "Mashhad",
+        "starting_time": "2025-02-12 14:00",
+        "duration": 120,
+        "max_passengers": 45,
+        "available_seats": [
+            "4A",
+            "4B",
+            "5A",
+            "5B",
+            "6A"
+        ],
+        "price": 780000,
+        "status": "available"
+    },
+    {
+        "id": 300102,
+        "origin": "Tabriz",
+        "destination": "Tehran",
+        "starting_time": "2025-02-15 19:45",
+        "duration": 95,
+        "max_passengers": 50,
+        "available_seats": [
+            "1A",
+            "10B",
+            "20C",
+            "25A"
+        ],
+        "price": 650000,
+        "status": "available"
+    },
+    {
+        "id": 300103,
+        "origin": "Shiraz",
+        "destination": "Kish",
+        "starting_time": "2025-02-20 11:15",
+        "duration": 60,
+        "max_passengers": 30,
+        "available_seats": [
+            "2A",
+            "2B",
+            "3C",
+            "4A"
+        ],
+        "price": 990000,
+        "status": "available"
+    },
+    {
+        "id": 300104,
+        "origin": "Mashhad",
+        "destination": "Ahvaz",
+        "starting_time": "2025-02-22 07:00",
+        "duration": 150,
+        "max_passengers": 35,
+        "available_seats": [
+            "1A",
+            "1B",
+            "7A",
+            "7B",
+            "8C"
+        ],
+        "price": 820000,
+        "status": "available"
+    },
+    {
+        "id": 300105,
+        "origin": "Tehran",
+        "destination": "Isfahan",
+        "starting_time": "2025-03-01 09:00",
+        "duration": 65,
+        "max_passengers": 40,
+        "available_seats": [
+            "3A",
+            "4A"
+        ],
+        "price": 480000,
+        "status": "available"
+    },
+    {
+        "id": 300106,
+        "origin": "Shiraz",
+        "destination": "Tabriz",
+        "starting_time": "2025-03-04 13:20",
+        "duration": 130,
+        "max_passengers": 50,
+        "available_seats": [
+            "5A",
+            "5B",
+            "6C"
+        ],
+        "price": 910000,
+        "status": "available"
+    },
+    {
+        "id": 300107,
+        "origin": "Kish",
+        "destination": "Tehran",
+        "starting_time": "2025-03-06 16:45",
+        "duration": 85,
+        "max_passengers": 35,
+        "available_seats": [
+            "1A",
+            "2B",
+            "3C"
+        ],
+        "price": 1050000,
+        "status": "available"
+    },
+    {
+        "id": 300108,
+        "origin": "Ahvaz",
+        "destination": "Mashhad",
+        "starting_time": "2025-03-08 06:00",
+        "duration": 155,
+        "max_passengers": 30,
+        "available_seats": [
+            "4A",
+            "4B"
+        ],
+        "price": 750000,
+        "status": "available"
+    },
+    {
+        "id": 300109,
+        "origin": "Mashhad",
+        "destination": "Shiraz",
+        "starting_time": "2025-03-10 12:40",
+        "duration": 110,
+        "max_passengers": 40,
+        "available_seats": [
+            "10A",
+            "11B"
+        ],
+        "price": 860000,
+        "status": "available"
+    },
+    {
+        "id": 300110,
+        "origin": "Tabriz",
+        "destination": "Kish",
+        "starting_time": "2025-03-12 10:30",
+        "duration": 140,
+        "max_passengers": 45,
+        "available_seats": [
+            "1A",
+            "1B"
+        ],
+        "price": 1120000,
+        "status": "available"
+    },
+    {
+        "id": 300111,
+        "origin": "Isfahan",
+        "destination": "Tehran",
+        "starting_time": "2025-03-14 17:10",
+        "duration": 70,
+        "max_passengers": 40,
+        "available_seats": [
+            "2A",
+            "2B"
+        ],
+        "price": 460000,
+        "status": "available"
+    },
+    {
+        "id": 300112,
+        "origin": "Shiraz",
+        "destination": "Isfahan",
+        "starting_time": "2025-03-16 08:50",
+        "duration": 90,
+        "max_passengers": 50,
+        "available_seats": [
+            "6A",
+            "6B",
+            "7C"
+        ],
+        "price": 720000,
+        "status": "available"
+    },
+    {
+        "id": 300113,
+        "origin": "Kish",
+        "destination": "Mashhad",
+        "starting_time": "2025-03-18 22:00",
+        "duration": 160,
+        "max_passengers": 30,
+        "available_seats": [
+            "3A",
+            "3B",
+            "4C"
+        ],
+        "price": 1150000,
+        "status": "available"
+    },
+    {
+        "id": 300114,
+        "origin": "Ahvaz",
+        "destination": "Tehran",
+        "starting_time": "2025-03-20 05:45",
+        "duration": 95,
+        "max_passengers": 40,
+        "available_seats": [
+            "8A",
+            "8B"
+        ],
+        "price": 670000,
+        "status": "available"
+    },
+    {
+        "id": 300115,
+        "origin": "Tehran",
+        "destination": "Tabriz",
+        "starting_time": "2025-03-22 14:00",
+        "duration": 80,
+        "max_passengers": 45,
+        "available_seats": [
+            "12B"
+        ],
+        "price": 590000,
+        "status": "available"
+    },
+    {
+        "id": 300116,
+        "origin": "Isfahan",
+        "destination": "Kish",
+        "starting_time": "2025-03-24 19:30",
+        "duration": 100,
+        "max_passengers": 35,
+        "available_seats": [
+            "9A",
+            "9B"
+        ],
+        "price": 990000,
+        "status": "available"
+    },
+    {
+        "id": 300117,
+        "origin": "Shiraz",
+        "destination": "Ahvaz",
+        "starting_time": "2025-03-26 06:25",
+        "duration": 55,
+        "max_passengers": 30,
+        "available_seats": [
+            "1A",
+            "1B",
+            "1C"
+        ],
+        "price": 430000,
+        "status": "available"
+    },
+    {
+        "id": 300118,
+        "origin": "Tabriz",
+        "destination": "Mashhad",
+        "starting_time": "2025-03-28 15:10",
+        "duration": 135,
+        "max_passengers": 50,
+        "available_seats": [
+            "14A",
+            "14B"
+        ],
+        "price": 880000,
+        "status": "available"
+    },
+    {
+        "id": 300119,
+        "origin": "Kish",
+        "destination": "Shiraz",
+        "starting_time": "2025-03-30 11:00",
+        "duration": 70,
+        "max_passengers": 40,
+        "available_seats": [
+            "2A",
+            "2B"
+        ],
+        "price": 930000,
+        "status": "available"
+    },
+    {
+        "id": 300120,
+        "origin": "Mashhad",
+        "destination": "Isfahan",
+        "starting_time": "2025-04-01 09:45",
+        "duration": 115,
+        "max_passengers": 45,
+        "available_seats": [
+            "5A",
+            "6B"
+        ],
+        "price": 740000,
+        "status": "available"
+    },
+    {
+        "id": 300121,
+        "origin": "Ahvaz",
+        "destination": "Kish",
+        "starting_time": "2025-04-03 20:30",
+        "duration": 85,
+        "max_passengers": 35,
+        "available_seats": [
+            "10A",
+            "10B"
+        ],
+        "price": 920000,
+        "status": "available"
+    },
+    {
+        "id": 300122,
+        "origin": "Tehran",
+        "destination": "Mashhad",
+        "starting_time": "2025-04-05 07:10",
+        "duration": 105,
+        "max_passengers": 50,
+        "available_seats": [
+            "1A",
+            "2A"
+        ],
+        "price": 780000,
+        "status": "available"
+    },
+    {
+        "id": 300123,
+        "origin": "Isfahan",
+        "destination": "Shiraz",
+        "starting_time": "2025-04-07 13:00",
+        "duration": 100,
+        "max_passengers": 40,
+        "available_seats": [
+            "3B",
+            "3C"
+        ],
+        "price": 690000,
+        "status": "available"
+    },
+    {
+        "id": 300124,
+        "origin": "Tabriz",
+        "destination": "Ahvaz",
+        "starting_time": "2025-04-09 21:15",
+        "duration": 145,
+        "max_passengers": 45,
+        "available_seats": [
+            "11A",
+            "11B"
+        ],
+        "price": 940000,
+        "status": "available"
+    },
+    {
+        "id": 300125,
+        "origin": "Tehran",
+        "destination": "Zanjan",
+        "starting_time": "2025-04-09 21:15",
+        "duration": 70,
+        "max_passengers": 50,
+        "available_seats": [
+            "A12",
+            "B4",
+            "C9",
+            "B8"
+        ],
+        "price": 550000,
+        "status": "available"
+    }
+]
