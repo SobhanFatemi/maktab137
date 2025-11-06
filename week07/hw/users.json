@@ -12,7 +12,7 @@
     },
     {
         "id": 200101,
-        "role": "passenger",
+        "role": "admin",
         "username": "Arman",
         "password_hash": "$2b$12$18ayo1qFByqweflR20WoSOjNk4DtbKg9eZXxLfJrFNoWMH69tPBc2",
         "first_name": "Arman",
@@ -23,7 +23,7 @@
     },
     {
         "id": 200102,
-        "role": "passenger",
+        "role": "admin",
         "username": "Fateme",
         "password_hash": "$2b$12$bDslIon87iHhrINjJK/CeexPxwhF8Xf9n/9W79r58vO6CezThITVC",
         "first_name": "Fateme",

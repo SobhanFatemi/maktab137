@@ -9,7 +9,10 @@
         "available_seats": [
             "2A",
             "2B",
-            "3A"
+            "3A",
+            "P8",
+            "P1",
+            "P4"
         ],
         "price": 550000,
         "status": "available"

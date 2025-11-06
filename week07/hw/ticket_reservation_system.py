@@ -25,6 +25,7 @@ def sign_in():
 
         if not username:
             print("Username already exists!")
+            continue
 
         password = input("Please enter you password: ")
         if len(password) < 6:
@@ -343,9 +344,14 @@ def create_travel():
         
 def edit_travel():
     while True:
+        found = False
         active_travel = None
+
+        travel_id_str = input("Please enter the travel id (q to quit): ")
+        if travel_id_str == 'q':
+            break
         try:
-            travel_id = int(input("Please enter the travel id (q to quit): "))
+            travel_id = int(travel_id_str)
         except ValueError:
             print("You need to enter the id in <number>!")
             continue
@@ -360,10 +366,15 @@ def edit_travel():
         for travel in travels:
             if travel_id == travel["id"]:
                 active_travel = travel
+                found = True
                 break
+        
+        if not found:
+            print("Travel not found!")
+            continue
 
         while True:
-            first_choice = input("Please enter your desired choice:\n1- Change Origin\n2- Change destination\n3- Change starting time\n4- Change duration\n5- Change max passangers\n6- Edit available seats\n7- Change price\n8- Save changes to file\n9- Quit\nYour choice: ")
+            first_choice = input("Please enter your desired choice:\n1- Change Origin\n2- Change destination\n3- Change starting time\n4- Change duration\n5- Change max passangers\n6- Edit available seats\n7- Change price\n8- Save changes to file\n9- Change travel status\n10- Quit\nYour choice: ")
 
             if first_choice == '1':
                 origin = input("Please enter the origin city: ").capitalize()
@@ -436,7 +447,7 @@ def edit_travel():
                             if seat_to_remove > len(active_travel["available_seats"]):
                                 print("That seat doesn't exist!")
                                 continue
-                            print(f"Removing '{active_travel["available_seats"][seat_to_remove - 1]}'")
+                            print(f"Removing '{active_travel["available_seats"][seat_to_remove - 1]}'...")
                             del active_travel["available_seats"][seat_to_remove - 1]
 
                         else:
@@ -461,13 +472,137 @@ def edit_travel():
 
             elif first_choice == '8':
                 with open(TRAVELS_PATH, 'w') as file:
-                    json.dump(travels, file)
+                    json.dump(travels, file, indent=4)
+                print("Changes saved!")
 
             elif first_choice == '9':
+                while True:
+                    status = input("Please enter the status:\n1- Available\n2- Full\n3- Canceled\n4- Quit")
+
+                    if status == '1':
+                        if not active_travel["available_seats"]:
+                            print("There are no seats available!")
+                            continue
+                        active_travel["status"] = "available"
+                        print("Status changed successfully!")
+                        continue
+
+                    elif status == '2':
+                        if active_travel["available_seats"]:
+                            make_sure = input("These seats are still available do you still want to turn this travel's status to full? (y/n): ")
+                            for i, available_seat in enumerate(active_travel["available_seats"]):
+                                print(f"{i+1}. {available_seat}")
+
+                            if make_sure == 'n':
+                                continue
+
+                        active_travel["status"] = "full"
+                        print("Status changed successfully!")
+                        continue
+
+                    elif status == '3':
+                        active_travel["status"] = "canceled"
+                        print("Status changed successfully!")
+                        continue
+
+                    elif status == '4':
+                        break
+
+                    else:
+                        print("Invalid input!")
+                        continue
+                
+
+            elif first_choice == '10':
+                break
+
+            else:
                 print("Invalid input!")
                 continue
-                           
+
+def search_users_in_travel():
+    while True:
+        users = []
+        found = False
+
+        travel_id_str = input("Please enter the travel id (q to quit): ")
+        if travel_id_str == 'q':
+            break
+        try:
+            travel_id = int(travel_id_str)
+        except ValueError:
+            print("You need to enter the id in <number>!")
+            continue
         
+        if travel_id == 'q':
+            break
+
+        with open(TRAVELS_PATH, 'r') as file:
+            travels = json.load(file)
+
+        for travel in travels:
+            if travel_id == travel["id"]:
+                found = True
+                break
+        
+        if not found:
+            print("Travel not found!")
+            continue
+        
+        with open(TICKETS_PATH, 'r') as file:
+            tickets = json.load(file)
+
+        print(f"User IDs for travel #{travel_id}")
+        for ticket in tickets:
+            if ticket["travel_id"] == travel_id:
+                print(f"#{ticket['user_id']}: {ticket['status'].capitalize()}")
+
+        
+def make_admin():
+    while True:
+        user_to_admin = None
+        found = False
+
+        user_id_str = input("Please enter the user id you want to make admin (q to quit): ")
+        if user_id_str == 'q':
+            break
+        try:
+            user_id = int(user_id_str)
+        except ValueError:
+            print("You need to enter the id in <number>!")
+            continue
+        
+        if user_id == 'q':
+            break
+
+        with open(USERS_PATH, 'r') as file:
+            users = json.load(file)
+
+        for user in users:
+            if user_id == user["id"]:
+                user_to_admin = user
+                found = True
+                break
+        
+        if not found:
+            print("User not found!")
+            continue
+        
+        if user["role"] == "admin":
+            print(f"'{user["username"]}' is already an admin!")
+            continue
+
+        make_sure = input(f"Are you sure you want to make '{user["username"]}' admin? (y/n): ")
+
+        if make_sure == 'y':
+            user_to_admin["role"] = "admin"
+            with open(USERS_PATH, 'w') as file:
+                json.dump(users, file, indent=4)
+            print(f"'{user["username"]}' is now an admin!")
+
+        else:
+            continue
+
 
 class User:
     def __init__(self, username: str, password: str, first_name: str, last_name: str, ph_number: int, birth_date: str):
@@ -751,7 +886,7 @@ while True:
             print("Invalid input!")
     
     elif active_user and active_user.role == "admin":
-        first_choice = input("Please enter your desired chocie:\n1- Search travels\n2- Pay for reserved tickets\n3- Create new travel\n4- Edit Travel\nm- Logout\nn- Quit\nYour choice: ")
+        first_choice = input("Please enter your desired chocie:\n1- Search travels\n2- Pay for reserved tickets\n3- Create new travel\n4- Edit Travel\n5- Passenger IDs in a travel\n6- Make a user admin\n7- Logout\n8- Quit\nYour choice: ")
 
         if first_choice == '1':
             available_tickets = search_travel()
@@ -765,15 +900,27 @@ while True:
         elif first_choice == '3':
             create_travel()
 
-        elif first_choice == 'm':
+        elif first_choice == '4':
+            edit_travel()
+
+        elif first_choice == '5':
+            search_users_in_travel()
+
+        elif first_choice == '6':
+            make_admin()
+
+        elif first_choice == '7':
             make_sure = input("Are you sure you want to logout? (y/n): ")
 
             if make_sure == 'y':
                 active_user = None
                 continue
+        elif first_choice == '8':
+            print("Quitting...")
+            break
 
     else:
-        first_choice = input("Please enter your desired chocie:\n1- Sign in\n2- Login\n3- Quit\nYour choice: ")
+        first_choice = input("Please enter your desired chocie:\n1- Sign in\n2- Log in\n3- Quit\nYour choice: ")
 
         if first_choice == '1':
             sign_in()
