@@ -1,0 +1,17 @@
+from services.user_service import UserService
+
+
+class AdminController:
+    def __init__(self):
+        self.service = UserService()
+
+    def make_admin(self):
+        try:
+            uid = int(input("User ID to promote: "))
+        except ValueError:
+            print("Invalid number!")
+            return
+
+        self.service.promote(uid)
+
+    

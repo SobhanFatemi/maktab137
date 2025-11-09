@@ -8,9 +8,7 @@
         "max_passengers": 40,
         "available_seats": [
             "2A",
-            "2B",
             "3A",
-            "P8",
             "P1",
             "P4"
         ],
@@ -60,7 +58,6 @@
         "available_seats": [
             "2A",
             "2B",
-            "3C",
             "4A"
         ],
         "price": 990000,
@@ -90,12 +87,9 @@
         "starting_time": "2025-03-01 09:00",
         "duration": 65,
         "max_passengers": 40,
-        "available_seats": [
-            "3A",
-            "4A"
-        ],
+        "available_seats": [],
         "price": 480000,
-        "status": "available"
+        "status": "full"
     },
     {
         "id": 300106,
@@ -121,8 +115,7 @@
         "max_passengers": 35,
         "available_seats": [
             "1A",
-            "2B",
-            "3C"
+            "2B"
         ],
         "price": 1050000,
         "status": "available"
@@ -191,9 +184,7 @@
         "duration": 90,
         "max_passengers": 50,
         "available_seats": [
-            "6A",
-            "6B",
-            "7C"
+            "6A"
         ],
         "price": 720000,
         "status": "available"
@@ -332,12 +323,9 @@
         "starting_time": "2025-04-05 07:10",
         "duration": 105,
         "max_passengers": 50,
-        "available_seats": [
-            "1A",
-            "2A"
-        ],
+        "available_seats": [],
         "price": 780000,
-        "status": "available"
+        "status": "full"
     },
     {
         "id": 300123,

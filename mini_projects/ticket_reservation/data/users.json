@@ -53,5 +53,38 @@
         "ph_number": 7676788787,
         "birth_date": "1930/7/11",
         "created_at": "2025-11-04 00:07:00"
+    },
+    {
+        "id": 200105,
+        "role": "passenger",
+        "username": "passanger",
+        "password_hash": "$2b$12$GChepxRwK4/VqeqH8QLvueoY0vMrIwd1AtsM1fw5KM1O7tsvhqgKe",
+        "first_name": "sobhan",
+        "last_name": "fatemi",
+        "ph_number": 9199092934,
+        "birth_date": "2003/1/14",
+        "created_at": "2025-11-07 15:40:46"
+    },
+    {
+        "id": 200106,
+        "role": "admin",
+        "username": "arman",
+        "password_hash": "$2b$12$fIXs5FS1P854vqNCKPuqjeQ1vvQHaGW04CUI3NX1ZtiT/afngE0TO",
+        "first_name": "arman",
+        "last_name": "fatemi",
+        "ph_number": 9199092934,
+        "birth_date": "2006/10/20",
+        "created_at": "2025-11-09 22:16:50"
+    },
+    {
+        "id": 200107,
+        "role": "passenger",
+        "username": "xxkillerman",
+        "password_hash": "$2b$12$AgHSpBQ.8PqO1WdPbbycueV43Xw1NU0G1IuMOZzK5zl.6ArdrbqE2",
+        "first_name": "Peter",
+        "last_name": "Smith",
+        "ph_number": 9199092934,
+        "birth_date": "1925/2/30",
+        "created_at": "2025-11-09 22:57:23"
     }
 ]
