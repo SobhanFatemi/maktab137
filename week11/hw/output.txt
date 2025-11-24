@@ -1,0 +1,4 @@
+Number of unique IPs: 2
+No endpoints found.
+Error rate is: 0.00%
+Average respond size is: 0.00 bytes

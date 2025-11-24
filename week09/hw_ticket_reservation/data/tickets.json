@@ -1,0 +1,121 @@
+[
+    {
+        "id": 400100,
+        "user_id": 200100,
+        "travel_id": 300115,
+        "seat_number": "12A",
+        "status": "paid"
+    },
+    {
+        "id": 400101,
+        "user_id": 200100,
+        "travel_id": 300115,
+        "seat_number": "12B",
+        "status": "paid"
+    },
+    {
+        "id": 400102,
+        "user_id": 200100,
+        "travel_id": 300103,
+        "seat_number": "4A",
+        "status": "paid"
+    },
+    {
+        "id": 400103,
+        "user_id": 200100,
+        "travel_id": 300100,
+        "seat_number": "1A",
+        "status": "paid"
+    },
+    {
+        "id": 400104,
+        "user_id": 200100,
+        "travel_id": 300100,
+        "seat_number": "1B",
+        "status": "paid"
+    },
+    {
+        "id": 400105,
+        "user_id": 200100,
+        "travel_id": 300100,
+        "seat_number": "3B",
+        "status": "paid"
+    },
+    {
+        "id": 400106,
+        "user_id": 200100,
+        "travel_id": 300105,
+        "seat_number": "3B",
+        "status": "paid"
+    },
+    {
+        "id": 400107,
+        "user_id": 200100,
+        "travel_id": 300115,
+        "seat_number": "12A",
+        "status": "paid"
+    },
+    {
+        "id": 400108,
+        "user_id": 200100,
+        "travel_id": 300100,
+        "seat_number": "P8",
+        "status": "paid"
+    },
+    {
+        "id": 400109,
+        "user_id": 200100,
+        "travel_id": 300122,
+        "seat_number": "1A",
+        "status": "paid"
+    },
+    {
+        "id": 400110,
+        "user_id": 200100,
+        "travel_id": 300112,
+        "seat_number": "6B",
+        "status": "paid"
+    },
+    {
+        "id": 400111,
+        "user_id": 200100,
+        "travel_id": 300100,
+        "seat_number": "2B",
+        "status": "paid"
+    },
+    {
+        "id": 400112,
+        "user_id": 200100,
+        "travel_id": 300122,
+        "seat_number": "2A",
+        "status": "paid"
+    },
+    {
+        "id": 400113,
+        "user_id": 200106,
+        "travel_id": 300103,
+        "seat_number": "3C",
+        "status": "paid"
+    },
+    {
+        "id": 400114,
+        "user_id": 200100,
+        "travel_id": 300107,
+        "seat_number": "3C",
+        "status": "paid"
+    },
+    {
+        "id": 400115,
+        "user_id": 200100,
+        "travel_id": 300105,
+        "seat_number": "4A",
+        "status": "paid"
+    },
+    {
+        "id": 400116,
+        "user_id": 200100,
+        "travel_id": 300100,
+        "seat_number": "P1",
+        "status": "paid"
+    }
+]
