@@ -5,16 +5,30 @@ import re as regex
 from collections import Counter 
 import time
 
+IP_PATTERN = r"\b(?:(?:2(?:[0-4][0-9]|5[0-5])|[0-1]?[0-9]?[0-9])\.){3}(?:2(?:[0-4][0-9]|5[0-5])|[0-1]?[0-9]?[0-9])\b"
+
+URL_PATTERN = r'"(?:GET|POST|PUT|DELETE|PATCH|OPTIONS|HEAD) ([^"]+) HTTP/\d\.\d"|https?://[^\s"]+'
+
+RESPONSE_SIZE_PATTERN = r'"(?:GET|POST|PUT|DELETE|PATCH|OPTIONS|HEAD) [^"]*" \d{3} (\d+)'
+
+ERRORS_PATTERN = r'"\s*(?:GET|POST|PUT|DELETE|PATCH|OPTIONS|HEAD)[^"]*"\s+([45]\d{2})'
+
+TIMESTAMP_PATTERN = r"\[\d{2}/[A-Za-z]{3}/\d{4}:\d{2}:\d{2}:\d{2} [+-]\d{4}\]|\[\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\]"
+
+EMAIL_PATTERN = r"(?<=\s)-\s*(?:[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}|-)"
+
+API_PATTERN = r'"(?:GET|POST|PUT|DELETE|PATCH|OPTIONS|HEAD)\s+([^"]*/api/[^"]*)\s+HTTP/\d\.\d"'
+
 def scan_log(filepath, mode, show_count=False, export_file=None):
     occurrence = 0
     results = []
 
     if mode == "ip":
-        pattern = r"\b(?:(?:2(?:[0-4][0-9]|5[0-5])|[0-1]?[0-9]?[0-9])\.){3}(?:2(?:[0-4][0-9]|5[0-5])|[0-1]?[0-9]?[0-9])\b"
+        pattern = IP_PATTERN
     elif mode == "url":
-        pattern = r'"(?:GET|POST|PUT|DELETE|PATCH|OPTIONS|HEAD) ([^"]+) HTTP/\d\.\d"|https?://[^\s"]+'
+        pattern = URL_PATTERN
     elif mode == "errors":
-        pattern = r'"\s*(?:GET|POST|PUT|DELETE|PATCH|OPTIONS|HEAD)[^"]*"\s+([45]\d{2})'
+        pattern = ERRORS_PATTERN
 
     else:
         print("Invalid mode.")
@@ -50,32 +64,24 @@ def show_stats(filepath, export_file=None):
     errors_count = 0
     respond_sizes = []
 
-    ip_pattern = r"\b(?:(?:2(?:[0-4][0-9]|5[0-5])|[0-1]?[0-9]?[0-9])\.){3}(?:2(?:[0-4][0-9]|5[0-5])|[0-1]?[0-9]?[0-9])\b"
-
-    endpoint_pattern = r'"(?:GET|POST|PUT|DELETE|PATCH|OPTIONS|HEAD) ([^"]+) HTTP/\d\.\d"|https?://[^\s"]+'
-
-    response_size_pattern = r'"(?:GET|POST|PUT|DELETE|PATCH|OPTIONS|HEAD) [^"]*" \d{3} (\d+)'
-
-    errors_pattern = r'"\s*(?:GET|POST|PUT|DELETE|PATCH|OPTIONS|HEAD)[^"]*"\s+([45]\d{2})'
-
     lines = read_txt(filepath)
 
     if not lines:
         return
 
     for line in lines:
-        ip_matches = regex.findall(ip_pattern, line)
+        ip_matches = regex.findall(IP_PATTERN, line)
         for ip_match in ip_matches:
             ips.add(ip_match)
 
-        endpoint_match = regex.search(endpoint_pattern, line)
+        endpoint_match = regex.search(URL_PATTERN, line)
         if endpoint_match:
             endpoints.append(endpoint_match.group(1))
 
-        if regex.search(errors_pattern, line):
+        if regex.search(ERRORS_PATTERN, line):
             errors_count += 1
         
-        respond_size_match = regex.search(response_size_pattern, line)
+        respond_size_match = regex.search(RESPONSE_SIZE_PATTERN, line)
         if respond_size_match:
             respond_sizes.append(int(respond_size_match.group(1)))
 
@@ -117,19 +123,11 @@ def clean_log(filepath, remove_ip=None, remove_timestamps=None,
               mask_email=None, extract_api=None, export_file=None):
     results = []
 
-    ip_pattern = r"\b(?:(?:2(?:[0-4][0-9]|5[0-5])|[0-1]?[0-9]?[0-9])\.){3}(?:2(?:[0-4][0-9]|5[0-5])|[0-1]?[0-9]?[0-9])\b"
-
-    timestamp_pattern = r"\[\d{2}/[A-Za-z]{3}/\d{4}:\d{2}:\d{2}:\d{2} [+-]\d{4}\]|\[\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\]"
-
-    email_pattern = r"(?<=\s)-\s*(?:[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}|-)"
-
-    api_pattern = r'"(?:GET|POST|PUT|DELETE|PATCH|OPTIONS|HEAD)\s+([^"]*/api/[^"]*)\s+HTTP/\d\.\d"'
-
     lines = read_txt(filepath)
 
     if extract_api:
         for line in lines:
-            if regex.search(api_pattern, line):
+            if regex.search(API_PATTERN, line):
                 results.append(line)
     else:
         results = lines
@@ -139,13 +137,13 @@ def clean_log(filepath, remove_ip=None, remove_timestamps=None,
         return
 
     if remove_ip:
-        results = [regex.sub(ip_pattern, "", result) for result in results]
+        results = [regex.sub(IP_PATTERN, "", result) for result in results]
 
     if remove_timestamps:
-        results = [regex.sub(timestamp_pattern, "", result) for result in results]
+        results = [regex.sub(TIMESTAMP_PATTERN, "", result) for result in results]
 
     if mask_email:
-        results = [regex.sub(email_pattern, "[REDACTED EMAIL]", result) for result in results]
+        results = [regex.sub(EMAIL_PATTERN, "[REDACTED EMAIL]", result) for result in results]
 
     for result in results:
         print(result.strip())
@@ -200,11 +198,11 @@ def write_txt(filepath, content):
 def main():
     parser = argparse.ArgumentParser(description="LogMaster for IPs, URLs, Errors and more!")
     subparsers = parser.add_subparsers(dest="command", required=True)
+
     scan = subparsers.add_parser("scan", help="Scan a file!")
     scan.add_argument("--file", required=True, help="Path to the file you want to scan!")
     scan.add_argument("--count", action="store_true", help="Print only the count of matches!")
     scan.add_argument("--export", metavar="FILE", help="Save results to a file!")
-
     scan_group = scan.add_mutually_exclusive_group(required=True)
     scan_group.add_argument("--ip", action="store_true", help="Extract IPs")
     scan_group.add_argument("--url", action="store_true", help="Extract URLs")

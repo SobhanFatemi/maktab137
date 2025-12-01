@@ -1,0 +1,13 @@
+{
+    "owner": "Khosro",
+    "balance": 2000,
+    "transactions": [],
+    "Sobhan": {
+        "balance": 1000,
+        "transactions": []
+    },
+    "Khosro": {
+        "balance": 2000,
+        "transactions": []
+    }
+}

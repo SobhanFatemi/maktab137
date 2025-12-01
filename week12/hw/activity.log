@@ -1,0 +1,40 @@
+2025-11-30 19:40:56,419 - ERROR - 31: utils.py - Invalid format! Please use HH:MM
+2025-12-01 12:24:53,821 - ERROR - 40: main.py - Invalid input!
+2025-12-01 12:27:06,881 - INFO - 101: main.py - Exiting program...
+Invalid input!
+Exiting program...
+2025-12-01 12:28:48 - ERROR - 40: main.py - Invalid input!
+2025-12-01 12:34:52 - INFO - 101: main.py - Exiting program...
+2025-12-01 12:34:57 - ERROR - main.py:40 - Invalid input!
+2025-12-01 12:35:03 - INFO - Exiting program...
+2025-12-01 12:35:17 - INFO - It's '10:30', time to 'Wash dishes'!
+2025-12-01 12:35:17 - WARNING - reminder_model.py:157 - Removed a reminder with the ID of '101'
+2025-12-01 12:35:17 - INFO - It's '12:45', time to 'Go on meeting'!
+Participants in that meeting: 
+Mohammad - Dorsa - Arman
+2025-12-01 12:35:17 - WARNING - reminder_model.py:157 - Removed a reminder with the ID of '102'
+2025-12-01 12:35:17 - INFO - It's '16:00', time to 'Go on a walk'! (Daily routine is on!)
+2025-12-01 12:35:17 - WARNING - reminder_model.py:157 - Removed a reminder with the ID of '103'
+2025-12-01 12:35:17 - INFO - It's '19:10', time to 'Cleaning house'!
+2025-12-01 12:35:17 - WARNING - reminder_model.py:157 - Removed a reminder with the ID of '104'
+2025-12-01 12:35:17 - INFO - It's '12:30', time to 'Do homework'! (Daily routine is on!)
+2025-12-01 12:35:17 - WARNING - reminder_model.py:157 - Removed a reminder with the ID of '105'
+2025-12-01 12:35:52 - WARNING - main.py:96 - No reminders of type 'simple' found.
+2025-12-01 12:36:26 - INFO - Created a 'simple' reminder
+2025-12-01 12:37:05 - INFO - Created a 'meeting' reminder
+2025-12-01 12:37:36 - INFO - Created a 'daily routine' reminder
+2025-12-01 12:37:47 - INFO - Exiting program...
+2025-12-01 12:41:39 - INFO - It's '09:00', time to 'Go on a walk'!
+2025-12-01 12:41:39 - WARNING - reminder_model.py:156 - Removed a reminder with the ID of '111'
+2025-12-01 12:41:39 - INFO - It's '10:00', time to 'Meeting with boss'!	Participants in that meeting:Ali ramezani - Sara Jahani
+2025-12-01 12:41:39 - WARNING - reminder_model.py:156 - Removed a reminder with the ID of '112'
+2025-12-01 12:41:39 - INFO - It's '18:00', time to 'Do homework'! (Daily routine is on!)
+2025-12-01 12:41:39 - WARNING - reminder_model.py:156 - Removed a reminder with the ID of '113'
+2025-12-01 12:42:40 - INFO - Exiting program...
+2025-12-01 12:43:29 - ERROR - main.py:105 - Invalid input
+2025-12-01 12:43:57 - INFO - Exiting program...
+2025-12-01 12:44:18 - WARNING - '120' was not found!
+2025-12-01 12:44:47 - WARNING - No reminders of type 'simple' found.
+2025-12-01 12:45:18 - WARNING - No reminders!
+2025-12-01 12:45:36 - ERROR - main.py:105 - Invalid input
+2025-12-01 12:46:43 - INFO - Exiting program...
