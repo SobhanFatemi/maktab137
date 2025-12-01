@@ -1,0 +1,52 @@
+[2025-02-12 11:00:01] INFO Server startup initialized
+[2025-02-12 11:00:02] INFO Loading configuration from /etc/server/conf.yml
+[2025-02-12 11:00:03] INFO Connecting to database...
+[2025-02-12 11:00:04] INFO Database connection established
+[2025-02-12 11:00:05] INFO HTTP listener started on port 8080
+[2025-02-12 11:00:12] INFO Health check: OK
+[2025-02-12 11:00:33] WARN High memory usage detected (72%)
+[2025-02-12 11:00:55] INFO Worker thread #3 started
+[2025-02-12 11:01:11] ERROR Failed to load cache entry for key=user_223
+[2025-02-12 11:01:22] INFO Processing request /api/users
+[2025-02-12 11:01:29] WARN Slow response: /api/products (1500ms)
+[2025-02-12 11:01:42] ERROR Database timeout while handling /api/orders
+[2025-02-12 11:01:57] INFO Request completed: /api/login
+[2025-02-12 11:02:11] ERROR Could not write log file: /var/log/server/data.log
+[2025-02-12 11:02:18] INFO Background sync started
+[2025-02-12 11:02:29] WARN Disk usage at 85%
+[2025-02-12 11:02:41] INFO Cached 52 new entries
+[2025-02-12 11:03:04] ERROR Missing configuration value: server.token
+[2025-02-12 11:03:21] INFO Request received: GET /contact
+[2025-02-12 11:03:44] WARN Authentication delay detected for user ID 19
+[2025-02-12 11:03:59] ERROR Email service unreachable (smtp.mail.com)
+[2025-02-12 11:04:13] INFO Sync cycle completed (312ms)
+[2025-02-12 11:04:29] INFO Processing request /api/settings
+[2025-02-12 11:04:55] ERROR Failed to parse JSON for /api/upload
+[2025-02-12 11:05:11] INFO Request processed successfully
+[2025-02-12 11:05:25] WARN Potential DDoS attempt detected (IP: 203.0.113.90)
+[2025-02-12 11:05:44] ERROR Connection reset by peer during /api/users
+[2025-02-12 11:06:01] INFO Worker thread #2 restarted
+[2025-02-12 11:06:17] INFO Processing request /api/orders?page=2
+[2025-02-12 11:06:39] WARN Slow database query (1200ms)
+[2025-02-12 11:06:55] ERROR File read permission denied: /etc/secure/token.key
+[2025-02-12 11:07:22] INFO Session expired for user 41
+[2025-02-12 11:07:31] INFO New session created for user 41
+[2025-02-12 11:07:55] ERROR Invalid API key from IP 198.51.100.20
+[2025-02-12 11:08:14] INFO Backup started
+[2025-02-12 11:08:42] INFO Backup in progress: 41%
+[2025-02-12 11:09:01] ERROR Backup failed: disk write error
+[2025-02-12 11:09:20] INFO Worker thread #5 started
+[2025-02-12 11:09:58] WARN High CPU usage: 91%
+[2025-02-12 11:10:11] INFO Request received: POST /api/messages
+[2025-02-12 11:10:27] ERROR Unable to reach analytics service
+[2025-02-12 11:10:50] INFO Request completed: /help
+[2025-02-12 11:11:09] WARN Session cookie mismatch detected
+[2025-02-12 11:11:33] ERROR Unexpected server panic in worker #7
+[2025-02-12 11:11:59] INFO Restarting worker #7
+[2025-02-12 11:12:17] INFO Environment health check passed
+[2025-02-12 11:12:51] ERROR Memory allocation failure
+[2025-02-12 11:13:12] INFO Cleaning temporary files...
+[2025-02-12 11:13:44] INFO Temporary files cleanup completed
+[2025-02-12 11:14:01] WARN Slow I/O operation detected (read latency 900ms)
+[2025-02-12 11:14:33] INFO Request received: GET /api/keys
+[2025-02-12 11:14:59] ERROR Could not update user permissions
