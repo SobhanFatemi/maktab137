@@ -1,0 +1,6 @@
+192.168.1.55 - admin@domain.com  "GET /api/products HTTP/1.1" 500 1024
+198.51.100.44 - maria@testmail.com  "GET /images/logo.png HTTP/1.1" 200 28421
+203.0.113.10 - -  "GET /videos HTTP/1.1" 200 4444
+192.168.1.10 - john@example.com  "POST /register HTTP/1.1" 409 88
+203.0.113.5 - guest@example.org  "GET /api/profile HTTP/1.1" 503 512
+198.51.100.44 - hello@hello.com  "GET /contact HTTP/1.1" 200 201

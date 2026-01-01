@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>hw16-3</title>
+    <link rel="stylesheet" href="hw16-3-style.css">
+</head>
+<body>
+    <section class="header">
+        <h1>رستوران مک دونالد شعبه تهران</h1>
+    </section>
+    
+    <section class="main">
+        <div class="left-col">
+
+            <div class="item">
+
+                <div class="image-sec">
+                    <img src="img/hamburger.png" alt="burger">
+                </div>
+
+                <div class="details-sec">
+
+                    <h4 class="name">همبرگر مخصوص</h4>
+
+                    <p><span class="price">280000</span> تومان</p>
+
+                    <div class="quantity-sec">
+                        <button onclick="increase(this)" class="add">+</button>
+                        <p class="quantity">0</p>
+                        <button onclick="decrease(this)" class="sub">-</button>
+                    </div>
+
+                </div>
+
+                <div class="total-sec">
+                    <p><span class="amount">0</span> تومان</p>
+                </div>
+                
+            </div>
+            <div class="item">
+                
+                <div class="image-sec">
+                    <img src="img/hamburger.png" alt="burger">
+                </div>
+
+                <div class="details-sec">
+
+                    <h4 class="name">همبرگر مخصوص با قارچ و پنیر</h4>
+
+                    <p><span class="price">400000</span> تومان</p>
+
+                    <div class="quantity-sec">
+                        <button onclick="increase(this)" class="add">+</button>
+                        <p class="quantity">0</p>
+                        <button onclick="decrease(this)" class="sub">-</button>
+                    </div>
+
+                </div>
+
+                <div class="total-sec">
+                    <p><span class="amount">0</span> تومان</p>
+                </div>
+                
+
+            </div>
+            <div class="item">
+
+                <div class="image-sec">
+                    <img src="img/french_fries.png" alt="fries">
+                </div>
+
+                <div class="details-sec">
+
+                    <h4 class="name">سیب زمینی سرخ کرده</h4>
+
+                    <p><span class="price">200000</span> تومان</p>
+
+                    <div class="quantity-sec">
+                        <button onclick="increase(this)" class="add">+</button>
+                        <p class="quantity">0</p>
+                        <button onclick="decrease(this)"  class="sub">-</button>
+                    </div>
+
+                </div>
+
+                <div class="total-sec">
+                    <p><span class="amount">0</span> تومان</p>
+                </div>
+                
+
+            </div>
+            <div class="item">
+
+                <div class="image-sec">
+                    <img src="img/soda.png" alt="soda">
+                </div>
+
+                <div class="details-sec">
+
+                    <h4 class="name">نوشابه</h4>
+
+                    <p><span class="price">50000</span> تومان</p>
+
+                    <div class="quantity-sec">
+                        <button onclick="increase(this)" class="add">+</button>
+                        <p class="quantity">0</p>
+                        <button onclick="decrease(this)" class="sub">-</button>
+                    </div>
+
+                </div>
+
+                <div class="total-sec">
+                    <p><span class="amount">0</span> تومان</p>
+                </div>
+                
+
+            </div>
+            <div class="item">
+
+                <div class="image-sec">
+                    <img src="img/ceasar.png" alt="ceasar salad">
+                </div>
+
+                <div class="details-sec">
+
+                    <h4 class="name">سالاد سزار</h4>
+
+                    <p><span class="price">350000</span> تومان</p>
+
+                    <div class="quantity-sec">
+                        <button onclick="increase(this)" class="add">+</button>
+                        <p class="quantity">0</p>
+                        <button onclick="decrease(this)" class="sub">-</button>
+                    </div>
+
+                </div>
+
+                <div class="total-sec">
+                    <p><span class="amount">0</span> تومان</p>
+                </div>
+                
+
+            </div>
+        </div>
+
+        <div class="right-col">
+            <div class="item">
+
+                <div class="image-sec">
+                    <img src="img/hamburger.png" alt="burger">
+                </div>
+
+                <div class="details-sec">
+
+                    <h4 class="name">همبرگر معمولی</h4>
+
+                    <p><span class="price">180000</span> تومان</p>
+
+                    <div class="quantity-sec">
+                        <button onclick="increase(this)" class="add">+</button>
+                        <p class="quantity">0</p>
+                        <button onclick="decrease(this)" class="sub">-</button>
+                    </div>
+
+                </div>
+
+                <div class="total-sec">
+                    <p><span class="amount">0</span> تومان</p>
+                </div>
+                
+
+            </div>
+            <div class="item">
+
+                <div class="image-sec">
+                    <img src="img/hamburger.png" alt="burger">
+                </div>
+
+                <div class="details-sec">
+
+                    <h4 class="name">همبرگر معمولی با قارچ و پنیر</h4>
+
+                    <p><span class="price">300000</span> تومان</p>
+
+                    <div class="quantity-sec">
+                        <button onclick="increase(this)" class="add">+</button>
+                        <p class="quantity">0</p>
+                        <button onclick="decrease(this)" class="sub">-</button>
+                    </div>
+
+                </div>
+
+                <div class="total-sec">
+                    <p><span class="amount">0</span> تومان</p>
+                </div>
+                
+
+            </div>
+            <div class="item">
+
+                <div class="image-sec">
+                    <img src="img/french_fries.png" alt="fries">
+                </div>
+
+                <div class="details-sec">
+
+                    <h4 class="name">سیب زمینی سرخ کرده ویژه</h4>
+
+                    <p><span class="price">350000</span> تومان</p>
+
+                    <div class="quantity-sec">
+                        <button onclick="increase(this)" class="add">+</button>
+                        <p class="quantity">0</p>
+                        <button onclick="decrease(this)" class="sub">-</button>
+                    </div>
+
+                </div>
+
+                <div class="total-sec">
+                    <p><span class="amount">0</span> تومان</p>
+                </div>
+                
+
+            </div>
+            <div class="item">
+
+                <div class="image-sec">
+                    <img src="img/soda.png" alt="soda">
+                </div>
+
+                <div class="details-sec">
+
+                    <h4 class="name">نوشابه رژیمی</h4>
+
+                    <p><span class="price">60000</span> تومان</p>
+
+                    <div class="quantity-sec">
+                        <button onclick="increase(this)" class="add">+</button>
+                        <p class="quantity">0</p>
+                        <button onclick="decrease(this)" class="sub">-</button>
+                    </div>
+
+                </div>
+
+                <div class="total-sec">
+                    <p><span class="amount">0</span> تومان</p>
+                </div> 
+
+            </div>
+            <div class="item">
+
+                <div class="image-sec">
+                    <img src="img/salad.png" alt="salad">
+                </div>
+
+                <div class="details-sec">
+
+                    <h4 class="name">سالاد فصل</h4>
+
+                    <p><span class="price">100000</span> تومان</p>
+
+                    <div class="quantity-sec">
+                        <button  onclick="increase(this)" class="add">+</button>
+                        <p class="quantity">0</p>
+                        <button onclick="decrease(this)" class="sub">-</button>
+                    </div>
+
+                </div>
+
+                <div class="total-sec">
+                    <p><span class="amount">0</span> تومان</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="total-amount-sec">
+        <h1>مبلغ قابل پرداخت: <span class="show-total"><span id="total" class="total-amount">0</span> تومان</span></h1>
+        <button class="pay">پرداخت آنلاین</button>
+    </section>
+
+    <script src="hw16-3-script.js"></script>
+</body>
+</html>

@@ -1,0 +1,3 @@
+Hello from log1
+Hello from log2
+Hello from log3

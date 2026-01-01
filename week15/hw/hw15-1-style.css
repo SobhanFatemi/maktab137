@@ -1,0 +1,27 @@
+body {
+    font-family: Arial;
+    background-color: rgb(212, 212, 212);
+}
+
+.white-box {
+    background-color: white;
+    padding: 1px;
+}
+
+.center-text {
+    text-align: center;
+}
+
+.main {
+    margin-left: 35%;
+    margin-right: 35%;
+}
+
+.white-box img {
+    display: block;
+    margin: 0 auto;
+}
+        
+.main li {
+    padding-bottom: 10px;
+}

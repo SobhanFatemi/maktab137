@@ -1,0 +1,6 @@
+ - admin@domain.com [12/Feb/2025:10:25:01 +0000] "GET /api/products HTTP/1.1" 500 1024
+ - maria@testmail.com [12/Feb/2025:10:41:18 +0000] "GET /images/logo.png HTTP/1.1" 200 28421
+ - - [12/Feb/2025:10:42:05 +0000] "GET /videos HTTP/1.1" 200 4444
+ - john@example.com [12/Feb/2025:10:42:59 +0000] "POST /register HTTP/1.1" 409 88
+ - guest@example.org [12/Feb/2025:10:43:12 +0000] "GET /api/profile HTTP/1.1" 503 512
+ - hello@hello.com [12/Feb/2025:10:43:59 +0000] "GET /contact HTTP/1.1" 200 201

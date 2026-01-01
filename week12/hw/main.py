@@ -3,15 +3,17 @@ from logger import logger
 
 def main():
     rm = ReminderManager()
+    group = []
     while True:
         menu_choice = input("Please enter your desired choice:\n" \
-                            "1- Create new remider\n" \
+                            "1- Create a new reminder\n" \
                             "2- Remove a reminder\n" \
                             "3- Show all reminders\n" \
                             "4- Find reminder using ID\n" \
-                            "5- Execute all reminders\n" \
-                            "6- Group reminders\n" \
-                            "7- Exit\n" \
+                            "5- Execute reminder using ID\n" \
+                            "6- Execute all reminders\n" \
+                            "7- Group reminders\n" \
+                            "8- Exit\n" \
                             "Your choice: ")
         
         if menu_choice == '1':
@@ -23,14 +25,17 @@ def main():
                             "Your choice: ")
             if reminder_type == '1':
                 rm.add_reminder("simple")
+                group = []
                 continue
             
             elif reminder_type == '2':
                 rm.add_reminder("meeting")
+                group = []
                 continue
 
             elif reminder_type == '3':
                 rm.add_reminder("daily")
+                group = []
                 continue
 
             elif reminder_type == '4':
@@ -50,8 +55,26 @@ def main():
                 continue
         
         elif menu_choice == '3':
-            rm.show_all()
-            continue
+            if not group:
+                rm.show()
+                continue
+            else:
+                execution_choice = input("Please enter your desired choice:\n" \
+                            "1- Show group\n" \
+                            "2- Show all\n" \
+                            "3- Exit\n" \
+                            "Your choice: ")
+                if execution_choice == '1':
+                    rm.show(group)
+                    continue
+                elif execution_choice == '2':
+                    rm.show()
+                    continue
+                elif execution_choice == '3':
+                    continue
+                else:
+                    logger.error("Invalid input!")
+                    continue
 
         elif menu_choice == '4':
             id = input("Please enter the ID of the reminder you want: ")
@@ -63,46 +86,107 @@ def main():
                 continue
 
         elif menu_choice == '5':
-            rm.execute_all()
-            continue
+            id = input("Please enter the ID of the reminder you want: ")
 
+            reminder = rm.id_exists(id)
+
+            if not reminder:
+                logger.warning(f"'{id}' was not found!")
+            else:
+                rm.execute([reminder])
+                group = []
+            
         elif menu_choice == '6':
-            type_choice_option = input("Please enter the type you want shown:\n" \
+            if not group:
+                rm.execute()
+                continue
+            else:
+                execution_choice = input("Please enter your desired choice:\n" \
+                            "1- Execute group\n" \
+                            "2- Execute all\n" \
+                            "3- Exit\n" \
+                            "Your choice: ")
+                if execution_choice == '1':
+                    rm.execute(group)
+                    group = []
+                    continue
+                elif execution_choice == '2':
+                    rm.execute()
+                    group = []
+                    continue
+                elif execution_choice == '3':
+                    continue
+                else:
+                    logger.error("Invalid input!")
+                    continue
+
+        elif menu_choice == '7':
+            if group:
+                type_choice_option = input("Please enter the type you want shown:\n" \
                                 "1- Simple\n" \
                                 "2- Meeting\n" \
                                 "3- Daily routine\n" \
-                                "4- Exit\n" \
+                                "4- Empty group"
+                                "5- Exit\n" \
                                 "Your choice: ")
             
-            if type_choice_option == '1':
-                type_choice = "simple"
+                if type_choice_option == '1':
+                    type_choice = "simple"
 
-            elif type_choice_option == '2':
-                type_choice = "meeting"
+                elif type_choice_option == '2':
+                    type_choice = "meeting"
 
-            elif type_choice_option == '3':
-                type_choice = "daily"
+                elif type_choice_option == '3':
+                    type_choice = "daily"
 
-            elif type_choice_option == '4':
-                continue
-            
+                elif type_choice_option == '4':
+                    group = []
+                    continue
+
+                elif type_choice_option == '5':
+                    continue
+                
+                else:
+                    logger.error("Invalid input!")
+                    continue
+                
             else:
-                logger.error("Invalid input!")
-                continue
+                type_choice_option = input("Please enter the type you want shown:\n" \
+                                    "1- Simple\n" \
+                                    "2- Meeting\n" \
+                                    "3- Daily routine\n" \
+                                    "4- Exit\n" \
+                                    "Your choice: ")
+            
+                if type_choice_option == '1':
+                    type_choice = "simple"
 
+                elif type_choice_option == '2':
+                    type_choice = "meeting"
+
+                elif type_choice_option == '3':
+                    type_choice = "daily"
+
+                elif type_choice_option == '4':
+                    continue
+                
+                else:
+                    logger.error("Invalid input!")
+                    continue
+            
             group = rm.reminder_group(type_choice)
 
             if not group:
                 logger.warning(f"No reminders of type '{type_choice}' found.")
             else:
-                rm.show_all(group)
+                rm.show(group)
 
-        elif menu_choice == '7':
+        elif menu_choice == '8':
             logger.info("Exiting program...")
             break            
         
         else:
-            logger.error("Invalid input")
+            logger.error("Invalid input!")
             continue
         
 if __name__ =="__main__":

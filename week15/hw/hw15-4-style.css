@@ -1,0 +1,81 @@
+@font-face {
+    font-family: "BNazanin";
+    src: local("BNazanin");
+}
+
+body {
+    font-family: "BNAzanin", arial;
+    direction: rtl;
+    text-align: right;
+    margin: 0;
+    height: 100vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(212, 212, 212);
+    box-shadow: inset 0 4px 15px rgba(0, 0, 0, 0.432)
+}
+
+.form-sec {
+    background-color: rgb(101, 148, 148);
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.432)
+}
+
+.center {
+    text-align: center;
+}
+
+.input {
+    font-family: "BNAzanin", arial;
+    display: block;
+    border: solid 1px rgba(95, 95, 95, 0.815);
+    border-radius: 7px;
+    box-shadow: inset 0 2px 5px rgba(141, 141, 141, 0.719);
+    padding: 3px 10px;
+    outline: none;
+    margin-bottom: 7px;
+}
+
+.form-sec select {
+    width: 100%;
+}
+
+.form-sec input {
+    width: 600px;
+}
+
+.form-sec input[type="file"] {
+    background-color: white;
+    padding: 6px;
+    width: 97.6%;
+}
+
+.form-sec input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: #1f83a29a;
+    box-shadow: 0 0 8px #0435449a;
+}
+
+.form-sec textarea {
+    width: 96.4%;
+    height: 100px;
+}
+
+.form-sec input[type="submit"] {
+   margin: 0 auto;
+   color: white;
+   background-color: rgb(15, 54, 85);
+   border: solid 0px black;
+   border-radius: 2px;
+   width: 20%;
+   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.336);
+}
+
+.form-sec  input[type="submit"]:hover {
+    background-color: rgb(15, 54, 85);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.4); 
+    transform: translateY(0.5px); 
+    outline: none; 
+}

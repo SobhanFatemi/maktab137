@@ -1,0 +1,52 @@
+* {
+    font-family: arial;
+}
+
+table, th, td {
+      border: 1px solid black;
+}
+
+.flex_sec{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.color_sec {
+    display: flex;
+    height: 5rem;
+}
+
+.color_sec div {
+    width: 25%;
+}
+
+.form_sec {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form_sec input {
+    display: block;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    border: solid 1px gray
+}
+
+.form_sec label {
+    display: block
+}
+
+.form_sec input[value="Register"] {
+    border: 0;
+    background-color: #F5B73C;
+    color: white;
+    padding: 7px
+}
+
+.form_sec form {
+    background-color: #EEDDC7;
+    padding: 30px;
+}
+

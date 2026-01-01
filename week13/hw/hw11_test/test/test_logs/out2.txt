@@ -1,0 +1,4 @@
+Number of unique IPs: 5
+Most requested endpoint: /api/products (1 requests)
+Error rate is: 50.00%
+Average respond size is: 5781.67 bytes
