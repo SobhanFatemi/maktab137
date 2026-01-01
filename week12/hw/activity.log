@@ -38,6 +38,7 @@ Mohammad - Dorsa - Arman
 2025-12-01 12:45:18 - WARNING - No reminders!
 2025-12-01 12:45:36 - ERROR - main.py:105 - Invalid input
 2025-12-01 12:46:43 - INFO - Exiting program...
+<<<<<<< HEAD
 2025-12-01 12:53:28 - INFO - Created a 'simple' reminder
 2025-12-01 12:54:19 - INFO - Created a 'meeting' reminder
 2025-12-01 12:54:33 - INFO - Created a 'daily routine' reminder
@@ -57,3 +58,5 @@ Mohammad - Dorsa - Arman
 2025-12-01 14:10:58 - INFO - Exiting program...
 2025-12-01 14:11:15 - INFO - It's '21:00', time to 'Eat dinner'!
 2025-12-01 14:11:15 - WARNING - Removed a reminder with the ID of '101'
+=======
+>>>>>>> 0733a7809c589505f0dd4b70e2c17c2f627c496b

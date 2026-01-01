@@ -122,8 +122,13 @@ class ReminderManager():
 
         for reminder in reminders:
             if list(reminder.keys())[0] == id:
+<<<<<<< HEAD
                 return reminder
         return None
+=======
+                return True
+        return False
+>>>>>>> 0733a7809c589505f0dd4b70e2c17c2f627c496b
 
     def find_by_id(self, id):
         reminders = read_json_file(REMINDER_FILE)
@@ -160,6 +165,7 @@ class ReminderManager():
 
         save_json_file_overwrite(REMINDER_FILE, reminders)
 
+<<<<<<< HEAD
     def show(self, reminders=None):
         if reminders is None:
             reminders = read_json_file(REMINDER_FILE)
@@ -169,6 +175,10 @@ class ReminderManager():
             return
         
         else:
+=======
+    def show_all(self, reminders=read_json_file(REMINDER_FILE)):
+        if reminders:
+>>>>>>> 0733a7809c589505f0dd4b70e2c17c2f627c496b
             for reminder in reminders:
                 for key, value in reminder.items():
                     if value["type"] == "simple":
@@ -187,6 +197,7 @@ class ReminderManager():
                             f"Timer set at: {value["timer"]}\n" \
                             f"Daily reminder: {"ON" if value["remind_daily"] == "Yes" else "OFF"}\n" \
                             f"Type of timer: Daily routine\n")
+<<<<<<< HEAD
             
     def execute(self, reminders=None):
         if reminders is None:
@@ -194,6 +205,17 @@ class ReminderManager():
 
         if not reminders:
             logger.warning("No reminders found!")
+=======
+        
+        else:
+            logger.warning("No reminders!")
+
+    def execute_all(self):
+        reminders = read_json_file(REMINDER_FILE)
+
+        if not reminders:
+            print("No reminders found!")
+>>>>>>> 0733a7809c589505f0dd4b70e2c17c2f627c496b
             return
 
         for reminder in reminders:

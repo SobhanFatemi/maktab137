@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [
     {
         "id": 200100,
@@ -95,4 +96,103 @@
         "birth_date": "1925/2/30",
         "created_at": "2025-11-09 22:57:23"
     }
+=======
+[
+    {
+        "id": 200100,
+        "role": "admin",
+        "username": "sobhan",
+        "password_hash": "$2b$12$zTNVAsbuyIk3aos1y7tq.OgnEwlgMaWgugLtPATxBmzcyvw5BU4Aa",
+        "first_name": "Sobhan",
+        "last_name": "Fatemi",
+        "email": "sobhanfatemi55@gmail.com",
+        "ph_number": 9199092934,
+        "birth_date": "2003/1/13",
+        "created_at": "2025-11-01T00:35:26.023326"
+    },
+    {
+        "id": 200101,
+        "role": "admin",
+        "username": "Arman",
+        "password_hash": "$2b$12$18ayo1qFByqweflR20WoSOjNk4DtbKg9eZXxLfJrFNoWMH69tPBc2",
+        "first_name": "Arman",
+        "last_name": "Fatemi",
+        "email": "sobhanfatemi55@gmail.com",
+        "ph_number": 9126391860,
+        "birth_date": "2008/3/28",
+        "created_at": "2025-11-01T00:44:30.048662"
+    },
+    {
+        "id": 200102,
+        "role": "admin",
+        "username": "Fateme",
+        "password_hash": "$2b$12$bDslIon87iHhrINjJK/CeexPxwhF8Xf9n/9W79r58vO6CezThITVC",
+        "first_name": "Fateme",
+        "last_name": "Keshvari",
+        "email": "sobhanfatemi55@gmail.com",
+        "ph_number": 9198392834,
+        "birth_date": "2005/3/20",
+        "created_at": "2025-11-01T00:45:24.348971"
+    },
+    {
+        "id": 200103,
+        "role": "passenger",
+        "username": "Steve",
+        "password_hash": "$2b$12$SlaRLvxrREWl7S1bptLK6.OYTuKctmyZUVgsQeummYvrpQKnAuBOy",
+        "first_name": "Steve",
+        "last_name": "Jobs",
+        "email": "sobhanfatemi55@gmail.com",
+        "ph_number": 9199092934,
+        "birth_date": "1930/11/11",
+        "created_at": "2025-11-01 00:48:01"
+    },
+    {
+        "id": 200104,
+        "role": "passenger",
+        "username": "hshshs",
+        "password_hash": "$2b$12$kzfKpv8/43U.uu7xUwGQxuoTnBYZR0XhvvAdAbXJnw1DIpJsPcnB2",
+        "first_name": "allaho akbar",
+        "last_name": "bia",
+        "email": "sobhanfatemi55@gmail.com",
+        "ph_number": 7676788787,
+        "birth_date": "1930/7/11",
+        "created_at": "2025-11-04 00:07:00"
+    },
+    {
+        "id": 200105,
+        "role": "passenger",
+        "username": "passanger",
+        "password_hash": "$2b$12$GChepxRwK4/VqeqH8QLvueoY0vMrIwd1AtsM1fw5KM1O7tsvhqgKe",
+        "first_name": "sobhan",
+        "last_name": "fatemi",
+        "email": "sobhanfatemi55@gmail.com",
+        "ph_number": 9199092934,
+        "birth_date": "2003/1/14",
+        "created_at": "2025-11-07 15:40:46"
+    },
+    {
+        "id": 200106,
+        "role": "admin",
+        "username": "arman",
+        "password_hash": "$2b$12$fIXs5FS1P854vqNCKPuqjeQ1vvQHaGW04CUI3NX1ZtiT/afngE0TO",
+        "first_name": "arman",
+        "last_name": "fatemi",
+        "email": "sobhanfatemi55@gmail.com",
+        "ph_number": 9199092934,
+        "birth_date": "2006/10/20",
+        "created_at": "2025-11-09 22:16:50"
+    },
+    {
+        "id": 200107,
+        "role": "passenger",
+        "username": "xxkillerman",
+        "password_hash": "$2b$12$AgHSpBQ.8PqO1WdPbbycueV43Xw1NU0G1IuMOZzK5zl.6ArdrbqE2",
+        "first_name": "Peter",
+        "last_name": "Smith",
+        "email": "sobhanfatemi55@gmail.com",
+        "ph_number": 9199092934,
+        "birth_date": "1925/2/30",
+        "created_at": "2025-11-09 22:57:23"
+    }
+>>>>>>> 0733a7809c589505f0dd4b70e2c17c2f627c496b
 ]
