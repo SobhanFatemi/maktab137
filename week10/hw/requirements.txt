@@ -1,0 +1,13 @@
+blinker
+click
+colorama
+flask
+iniconfig
+itsdangerous
+jinja2
+markupsafe
+packaging
+psycopg2-binary
+pygments
+werkzeug
+pytest
